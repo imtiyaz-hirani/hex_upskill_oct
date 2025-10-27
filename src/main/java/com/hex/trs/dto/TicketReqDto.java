@@ -17,3 +17,7 @@ public record TicketReqDto(
         @NotBlank
        String priority
 ) { }
+/*
+* subject()
+* issue()
+* */
