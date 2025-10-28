@@ -5,13 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "executives")
 @Getter
 @Setter
-public class Customer {
+public class Executive {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String city;
+    private String jobTitle;
 }

@@ -40,4 +40,7 @@ public class Ticket {
 
     @ManyToOne
     private Customer customer;
+
+    @ManyToOne
+    private Ticket ticket;
 }
