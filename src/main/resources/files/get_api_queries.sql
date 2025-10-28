@@ -33,9 +33,19 @@ where c.id=2 AND t.executive_id IS NOT NULL;
 select * from tickets; 
 
  
+# Display Info with Customer and Executive details with plan
 
+select * from tickets;
+select * from executives;
+select * from plans;
+select * from customers;
 
-
+select t.id, t.priority,t.status, t.created_at, c.city as cname, e.name as exe_name,e.job_title,p.plan_name,p.price
+from customers c
+LEFT JOIN tickets t ON c.id = t.customer_id
+JOIN executives e ON t.executive_id = e.id
+JOIN customer_plan cp ON c.id = cp.customer_id
+JOIN plans p ON cp.plan_id = p.id;
 
 
 
