@@ -1,5 +1,6 @@
 package com.hex.trs.controller;
 
+import com.hex.trs.dto.TicketPlanDto;
 import com.hex.trs.dto.TicketReqDto;
 import com.hex.trs.dto.TicketRespDto;
 import com.hex.trs.model.Ticket;
@@ -31,5 +32,13 @@ public class TicketController {
     @GetMapping("/customer/{customerId}")
     public List<Ticket> getTicketsByCustomer(@PathVariable Long customerId){
         return ticketService.getTicketsByCustomer(customerId);
+    }
+
+    @GetMapping("/plan/info")
+    public List<TicketPlanDto> getTicketDetailsWithPlanInfo(
+            @RequestParam(required = false, defaultValue = "0") String page,
+            @RequestParam(required = false, defaultValue = "10") String size
+    ){
+        return ticketService.getTicketDetailsWithPlanInfo(page,size);
     }
 }

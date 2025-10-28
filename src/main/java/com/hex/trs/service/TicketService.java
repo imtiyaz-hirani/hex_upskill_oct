@@ -1,5 +1,6 @@
 package com.hex.trs.service;
 
+import com.hex.trs.dto.TicketPlanDto;
 import com.hex.trs.dto.TicketReqDto;
 import com.hex.trs.dto.TicketRespDto;
 import com.hex.trs.enums.Status;
@@ -9,6 +10,8 @@ import com.hex.trs.model.Ticket;
 import com.hex.trs.repository.TicketRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,5 +47,10 @@ public class TicketService {
 
     public List<Ticket> getTicketsByCustomer(Long customerId) {
         return ticketRepository.getTicketsByCustomer(customerId);
+    }
+
+    public List<TicketPlanDto> getTicketDetailsWithPlanInfo(String page, String size) {
+        Pageable pageable =  PageRequest.of(Integer.parseInt(page),Integer.parseInt(size));
+        return ticketRepository.getTicketDetailsWithPlanInfo(pageable);
     }
 }
