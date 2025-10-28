@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -25,5 +26,10 @@ public class TicketController {
         return ResponseEntity
                 .created(URI.create("/api/ticket/add"))
                 .body(ticketService.add(customerId,ticketReqDto));
+    }
+
+    @GetMapping("/customer/{customerId}")
+    public List<Ticket> getTicketsByCustomer(@PathVariable Long customerId){
+        return ticketService.getTicketsByCustomer(customerId);
     }
 }

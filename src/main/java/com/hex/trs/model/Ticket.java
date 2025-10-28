@@ -42,5 +42,5 @@ public class Ticket {
     private Customer customer;
 
     @ManyToOne
-    private Ticket ticket;
+    private Executive executive;
 }

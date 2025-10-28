@@ -11,6 +11,8 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class TicketService {
@@ -38,5 +40,9 @@ public class TicketService {
         * Save ticket & send trimmed response
         * */
         return ticketMapper.toDto(ticketRepository.save(ticket));
+    }
+
+    public List<Ticket> getTicketsByCustomer(Long customerId) {
+        return ticketRepository.getTicketsByCustomer(customerId);
     }
 }
