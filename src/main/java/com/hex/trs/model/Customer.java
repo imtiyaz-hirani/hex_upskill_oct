@@ -14,4 +14,6 @@ public class Customer {
     private Long id;
     private String name;
     private String city;
+    @OneToOne
+    private User user;
 }

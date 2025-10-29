@@ -14,4 +14,7 @@ public class Executive {
     private Long id;
     private String name;
     private String jobTitle;
+
+    @OneToOne
+    private User user;
 }
