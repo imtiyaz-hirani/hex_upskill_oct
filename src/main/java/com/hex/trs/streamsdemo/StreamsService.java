@@ -31,7 +31,7 @@ public class StreamsService {
         products.add(new Product(7, "TravelMate Lite", 450.00, Category.LAPTOP, vendors.get(6)));
         products.add(new Product(8, "Nexus Phone 12", 1099.99, Category.MOBILE, vendors.get(7)));
         products.add(new Product(9, "Compact Mini PC", 550.00, Category.DESKTOP, vendors.get(8)));
-        products.add(new Product(10, "The Dominator", 2499.00, Category.DESKTOP, vendors.get(9)));
+        products.add(new Product(10, "The Dominator", 2499.00, Category.DESKTOP, vendors.get(8)));
 
         return products;
     }

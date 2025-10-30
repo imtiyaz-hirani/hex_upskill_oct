@@ -1,6 +1,8 @@
 package com.hex.trs.streamsdemo;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamsMainApp {
     public static void main(String[] args) {
@@ -30,6 +32,16 @@ public class StreamsMainApp {
                                             .map((p)->p.getTitle())
                                             .toList();
         System.out.println(productNames);
+
+        System.out.println("--------------------------------------------------------");
+        // Display products grouped by Vendor name
+        Map<String,List<Product>> map =  list.stream()
+                                            .collect(Collectors.groupingBy(p->p.getVendor().getName()));
+
+        map.entrySet().forEach(entry->{
+            System.out.println(entry.getKey());
+            streamsService.displayList(entry.getValue());
+        });
     }
 }
 //5  7  : 5-7 = -ve   : [5,7]
