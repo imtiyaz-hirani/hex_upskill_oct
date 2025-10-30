@@ -15,6 +15,11 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
             group by c.id,c.city
             """)
     List<CustomerDto> getCustomerWithTicketsCount();
+
+    @Query("""
+            select c from Customer c where c.user.username=?1
+            """)
+    Customer getCustomerByUsername(String customerUsername);
 }
 
 /*
@@ -22,3 +27,9 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
 from customers c LEFT JOIN tickets t ON c.id = t.customer_id
 group by c.id, c.name
 * */
+
+/*
+ * select c from Customer c JOIN User u ON c.user = u where u.username=?1
+ * select c from Customer c JOIN c.user u where u.username=?1
+ * select c from Customer c where c.user.username=?1
+ */

@@ -1,5 +1,6 @@
 package com.hex.trs.config;
 
+import com.hex.trs.exception.InvalidIdException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -32,6 +33,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler( RuntimeException.class)
     public  ResponseEntity<?> handleRuntimeException(RuntimeException e){
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler( InvalidIdException.class)
+    public  ResponseEntity<?> handleInvalidIdException(InvalidIdException e){
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 }

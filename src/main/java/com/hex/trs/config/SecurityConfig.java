@@ -58,7 +58,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/auth/customer/hello").hasAnyAuthority("CUSTOMER")
                        .requestMatchers(HttpMethod.GET, "/api/auth/executive/hello").hasAnyAuthority("EXECUTIVE")
                        .requestMatchers(HttpMethod.POST, "/api/customer/signup").permitAll()
-
+                       .requestMatchers(HttpMethod.POST, "/api/customer/plan/{planId}").hasAnyAuthority("CUSTOMER")
                         .anyRequest().authenticated()
                 );
         http.httpBasic(Customizer.withDefaults()); //register http basic aut with spring
